@@ -112,12 +112,15 @@ var (
 )
 
 const (
-	root                 = "/"
-	cmdApiPath           = "cmd/api"
-	cmdWebPath           = "cmd/web"
-	internalServerPath   = "internal/server"
-	internalDatabasePath = "internal/database"
-	gitHubActionPath     = ".github/workflows"
+	root                   = "/"
+	cmdApiPath             = "cmd/api"
+	cmdWebPath             = "cmd/web"
+	internalServerPath     = "internal/server"
+	internalDatabasePath   = "internal/database"
+	internalModelsPath     = "internal/models"
+	internalRepositoryPath = "internal/repository"
+	internalHandlersPath   = "internal/handlers"
+	gitHubActionPath       = ".github/workflows"
 )
 
 // CheckOs checks Operation system and generates MakeFile and `go build` command
@@ -318,6 +321,42 @@ func (p *Project) CreateMainFile() error {
 		err = p.CreateFileWithInjection(internalDatabasePath, projectPath, "database.go", "database")
 		if err != nil {
 			log.Printf("Error injecting database.go file: %v", err)
+			return err
+		}
+
+		err = p.CreatePath(internalRepositoryPath, projectPath)
+		if err != nil {
+			log.Printf("Error creating path: %s", internalDatabasePath)
+			return err
+		}
+
+		err = p.CreateFileWithInjection(internalRepositoryPath, projectPath, "repository.go", "repository")
+		if err != nil {
+			log.Printf("Error injecting database.go file: %v", err)
+			return err
+		}
+
+		err = p.CreatePath(internalModelsPath, projectPath)
+		if err != nil {
+			log.Printf("Error creating path: %s", internalDatabasePath)
+			return err
+		}
+
+		err = p.CreateFileWithInjection(internalModelsPath, projectPath, "models.go", "models")
+		if err != nil {
+			log.Printf("Error injecting database.go file: %v", err)
+			return err
+		}
+
+		err = p.CreatePath(internalHandlersPath, projectPath)
+		if err != nil {
+			log.Printf("Error creating path: %s", internalDatabasePath)
+			return err
+		}
+
+		err = p.CreateFileWithInjection(internalHandlersPath, projectPath, "handlers.go", "handlers")
+		if err != nil {
+			log.Printf("Error creating path: %s", internalDatabasePath)
 			return err
 		}
 
