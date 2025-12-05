@@ -1,0 +1,21 @@
+package repository
+
+import (
+	"net/http"
+	"{{.ProjectName}}/internal/repository"
+	"github.com/gin-gonic/gin"
+)
+
+type Handlers interface {
+  Create()
+}
+
+type Handlers struct {
+	repo *repository.Repository
+}
+
+func NewHandler(repo *repository.Repository) Handlers {
+	return &handlers{repo: repo}
+}
+
+func (h *Handlers) Create() {}

@@ -42,3 +42,15 @@ func (e EchoTemplates) HtmxTemplRoutes() []byte {
 func (e EchoTemplates) WebsocketImports() []byte {
 	return advanced.StdLibWebsocketTemplImportsTemplate()
 }
+
+func (e EchoTemplates) Handlers() []byte {
+	return standardHandlersTemplate
+}
+
+func (e EchoTemplates) Models() []byte {
+	return standardModelsTemplate
+}
+
+func (e EchoTemplates) Repository() []byte {
+	return standardRepositoryTemplate
+}

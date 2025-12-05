@@ -24,6 +24,18 @@ func (g GinTemplates) Server() []byte {
 	return standardServerTemplate
 }
 
+func (g GinTemplates) Handlers() []byte {
+	return standardHandlersTemplate
+}
+
+func (g GinTemplates) Models() []byte {
+	return standardModelsTemplate
+}
+
+func (g GinTemplates) Repository() []byte {
+	return standardRepositoryTemplate
+}
+
 func (g GinTemplates) Routes() []byte {
 	return ginRoutesTemplate
 }

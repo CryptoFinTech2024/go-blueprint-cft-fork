@@ -69,6 +69,9 @@ type Templater interface {
 	Main() []byte
 	Server() []byte
 	Routes() []byte
+	Handlers() []byte
+	Models() []byte
+	Repository() []byte
 	TestHandler() []byte
 	HtmxTemplRoutes() []byte
 	HtmxTemplImports() []byte
@@ -802,6 +805,15 @@ func (p *Project) CreateFileWithInjection(pathToCreate string, projectPath strin
 	case "routes":
 		routeFileBytes := p.FrameworkMap[p.ProjectType].templater.Routes()
 		createdTemplate := template.Must(template.New(fileName).Parse(string(routeFileBytes)))
+		err = createdTemplate.Execute(createdFile, p)
+	case "handlers":
+		createdTemplate := template.Must(template.New(fileName).Parse(string(p.FrameworkMap[p.ProjectType].templater.Handlers())))
+		err = createdTemplate.Execute(createdFile, p)
+	case "models":
+		createdTemplate := template.Must(template.New(fileName).Parse(string(p.FrameworkMap[p.ProjectType].templater.Models())))
+		err = createdTemplate.Execute(createdFile, p)
+	case "repository":
+		createdTemplate := template.Must(template.New(fileName).Parse(string(p.FrameworkMap[p.ProjectType].templater.Repository())))
 		err = createdTemplate.Execute(createdFile, p)
 	case "releaser":
 		createdTemplate := template.Must(template.New(fileName).Parse(string(advanced.Releaser())))

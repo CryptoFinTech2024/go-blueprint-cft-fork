@@ -43,3 +43,15 @@ func (c ChiTemplates) HtmxTemplRoutes() []byte {
 func (c ChiTemplates) WebsocketImports() []byte {
 	return advanced.StdLibWebsocketTemplImportsTemplate()
 }
+
+func (c ChiTemplates) Handlers() []byte {
+	return standardHandlersTemplate
+}
+
+func (c ChiTemplates) Models() []byte {
+	return standardModelsTemplate
+}
+
+func (c ChiTemplates) Repository() []byte {
+	return standardRepositoryTemplate
+}

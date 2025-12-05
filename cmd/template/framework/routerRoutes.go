@@ -42,3 +42,15 @@ func (r RouterTemplates) HtmxTemplRoutes() []byte {
 func (r RouterTemplates) WebsocketImports() []byte {
 	return advanced.StdLibWebsocketTemplImportsTemplate()
 }
+
+func (r RouterTemplates) Handlers() []byte {
+	return standardHandlersTemplate
+}
+
+func (r RouterTemplates) Models() []byte {
+	return standardModelsTemplate
+}
+
+func (r RouterTemplates) Repository() []byte {
+	return standardRepositoryTemplate
+}

@@ -1,0 +1,22 @@
+package repository
+
+import (
+	"database/sql"
+	
+	"{{.ProjectName}}/internal/models"
+)
+
+type Repository interface {
+  Create()
+}
+
+type repository struct {
+  db *sql.DB
+}
+
+
+func NewRepository(db *sql.DB) Repository{
+  return &repository{db:db}
+}
+
+func (r *repository) Create(){}

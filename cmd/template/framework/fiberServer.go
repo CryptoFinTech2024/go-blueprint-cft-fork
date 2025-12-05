@@ -48,3 +48,15 @@ func (f FiberTemplates) HtmxTemplRoutes() []byte {
 func (f FiberTemplates) WebsocketImports() []byte {
 	return advanced.FiberWebsocketTemplImportsTemplate()
 }
+
+func (f FiberTemplates) Handlers() []byte {
+	return standardHandlersTemplate
+}
+
+func (f FiberTemplates) Models() []byte {
+	return standardModelsTemplate
+}
+
+func (f FiberTemplates) Repository() []byte {
+	return standardRepositoryTemplate
+}

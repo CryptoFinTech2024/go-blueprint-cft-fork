@@ -12,6 +12,15 @@ var standardRoutesTemplate []byte
 //go:embed files/server/standard_library.go.tmpl
 var standardServerTemplate []byte
 
+//go:embed files/handlers/handlers.go.tmpl
+var standardHandlersTemplate []byte
+
+//go:embed files/repository/repository.go.tmpl
+var standardRepositoryTemplate []byte
+
+//go:embed files/models/models.go.tmpl
+var standardModelsTemplate []byte
+
 //go:embed files/tests/default-test.go.tmpl
 var standardTestHandlerTemplate []byte
 
@@ -45,4 +54,16 @@ func (s StandardLibTemplate) HtmxTemplRoutes() []byte {
 
 func (s StandardLibTemplate) WebsocketImports() []byte {
 	return advanced.StdLibWebsocketTemplImportsTemplate()
+}
+
+func (s StandardLibTemplate) Handlers() []byte {
+	return standardHandlersTemplate
+}
+
+func (s StandardLibTemplate) Models() []byte {
+	return standardModelsTemplate
+}
+
+func (s StandardLibTemplate) Repository() []byte {
+	return standardRepositoryTemplate
 }
